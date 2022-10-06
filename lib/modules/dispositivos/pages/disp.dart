@@ -18,7 +18,7 @@ class _DispositivosState extends State<Dispositivos> {
       backgroundColor: Color.fromARGB(255, 192, 229, 208),
       body: ListView(
         children: [
-          
+
           // Título
           Padding(
             padding: EdgeInsets.fromLTRB(20, 50, 20, 30),
