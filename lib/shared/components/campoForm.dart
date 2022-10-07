@@ -39,13 +39,13 @@ class _TextFomFieldState extends State<CampoForm> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.all(20),
+      padding: const EdgeInsets.fromLTRB(50, 5, 50, 0),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Padding(
-            padding: EdgeInsets.fromLTRB(0, 0, 0, 5),
+            padding: const EdgeInsets.fromLTRB(50, 5, 50, 0),
             child: Text(widget.legenda,
                 style: TextStyle(
                     fontWeight: FontWeight.bold, color: widget.corLegenda)),
