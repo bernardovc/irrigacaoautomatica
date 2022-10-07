@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 
-import '../../dispositivos/models/usuarioModel.dart';
+import '../models/UsuarioModel.dart';
 
 class UsuarioController extends ChangeNotifier {
   final nome = TextEditingController();
