@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:trabalhotcc/shared/components/botaoTexto.dart';
 
 import '../../../shared/components/campoForm.dart';
 import '../controllers/UsuarioController.dart';
@@ -18,7 +19,7 @@ class _cadastroUsuarioState extends State<cadastroUsuario> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color.fromARGB(255, 192, 229, 208),
+      backgroundColor: const Color.fromARGB(255, 192, 229, 208),
       appBar: AppBar(
         title: const Text('Cadastro'),
       ),
@@ -68,6 +69,11 @@ class _cadastroUsuarioState extends State<cadastroUsuario> {
               isSenha: true,
               legenda: '',
             ),
+
+            Padding(
+            padding: const EdgeInsets.fromLTRB(50, 20, 20, 0),
+            child: BotaoTexto(tamanhoBotao:Size(100,50),  texto: 'Salvar', funcao: (),)  
+          ),
           ],
         ),
       ),

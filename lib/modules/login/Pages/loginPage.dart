@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:trabalhotcc/modules/Cadastro/Pages/cadastroPage.dart';
 
+import '../Controllers/loginControllers.dart';
+
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key, String? title}) : super(key: key);
 
@@ -10,6 +12,7 @@ class LoginPage extends StatefulWidget {
 
 class _LoginPageState extends State<LoginPage> {
   var mostrarSenha = false;
+  final _controller = LoginController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
