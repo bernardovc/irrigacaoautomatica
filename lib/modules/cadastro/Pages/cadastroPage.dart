@@ -25,6 +25,11 @@ class _cadastroUsuarioState extends State<cadastroUsuario> {
       body: Form(
         child: ListView(
           children: [
+            Image.asset(
+              'assets/images/Logo2.png',
+              width: 350,
+              height: 350,
+            ),
             CampoForm(
               label: 'Seu nome completo',
               dica: 'ex: fulano de tal',
