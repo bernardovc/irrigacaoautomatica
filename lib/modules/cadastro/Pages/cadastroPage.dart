@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
 
+import '../../../shared/components/campoForm.dart';
+import '../controllers/UsuarioController.dart';
+
 class cadastroUsuario extends StatefulWidget {
   const cadastroUsuario({Key? key}) : super(key: key);
 
@@ -10,6 +13,7 @@ class cadastroUsuario extends StatefulWidget {
 }
 
 class _cadastroUsuarioState extends State<cadastroUsuario> {
+  final _controller = UsuarioController();
   var mostrarSenha = false;
   @override
   Widget build(BuildContext context) {
@@ -18,142 +22,49 @@ class _cadastroUsuarioState extends State<cadastroUsuario> {
       appBar: AppBar(
         title: const Text('Cadastro'),
       ),
-      body: ListView(
-        children: [
-          Image.asset(
-            'assets/images/Logo2.png',
-            width: 350,
-            height: 350,
-          ),
-          //nome completo
-          Padding(
-            padding: const EdgeInsets.fromLTRB(50, 20, 20, 0),
-            child: TextFormField(
-              keyboardType: TextInputType.name,
-              decoration: InputDecoration(
-                  hintText: 'Maria Silva',
-                  label: Text('Nome de completo:'),
-                  prefixIcon: Icon(Icons.account_circle),
-                  border: OutlineInputBorder(),
-                  fillColor: Colors.white,
-                  filled: true),
+      body: Form(
+        child: ListView(
+          children: [
+            CampoForm(
+              label: 'Seu nome completo',
+              dica: 'ex: fulano de tal',
+              controller: _controller.nome,
+              legenda: '',
             ),
-          ),
-          //nome usuario
-          Padding(
-            padding: const EdgeInsets.fromLTRB(50, 20, 20, 0),
-            child: TextFormField(
-              keyboardType: TextInputType.name,
-              decoration: InputDecoration(
-                  hintText: 'Ex. usuario',
-                  label: Text('Nome de usuário:'),
-                  prefixIcon: Icon(Icons.account_circle),
-                  border: OutlineInputBorder(),
-                  fillColor: Colors.white,
-                  filled: true),
+            CampoForm(
+              label: 'Nome de usuario',
+              dica: 'usuario',
+              controller: _controller.nomeUsu,
+              legenda: '',
             ),
-          ),
-          Padding(
-            padding: const EdgeInsets.fromLTRB(50, 20, 20, 0),
-            child: TextFormField(
-              keyboardType: TextInputType.name,
-              decoration: InputDecoration(
-                  hintText: 'Ex. usuario',
-                  label: Text('Nome da propriedade:'),
-                  prefixIcon: Icon(Icons.add_home_work),
-                  border: OutlineInputBorder(),
-                  fillColor: Colors.white,
-                  filled: true),
+            CampoForm(
+              label: 'Nome da propriedade',
+              dica: 'Fazendinha feliz',
+              controller: _controller.nomeProp,
+              legenda: '',
             ),
-          ),
-
-          Padding(
-            padding: const EdgeInsets.fromLTRB(50, 20, 20, 0),
-            child: TextFormField(
-              keyboardType: TextInputType.number,
-              decoration: InputDecoration(
-                  hintText: 'Ex. 123456789',
-                  label: Text('CPF:'),
-                  prefixIcon: Icon(Icons.accessibility),
-                  border: OutlineInputBorder(),
-                  fillColor: Colors.white,
-                  filled: true),
+            CampoForm(
+              label: 'CPF',
+              dica: '123.456.891-70',
+              controller: _controller.cpf,
+              legenda: '',
             ),
-          ),
-
-          //EMAIL
-          Padding(
-            padding: const EdgeInsets.fromLTRB(50, 20, 20, 0),
-            child: TextFormField(
-              keyboardType: TextInputType.emailAddress,
-              decoration: InputDecoration(
-                  hintText: 'Ex. exemplo@email.com',
-                  label: Text('Email:'),
-                  prefixIcon: Icon(Icons.mail),
-                  // ignore: prefer_const_constructors
-                  border: OutlineInputBorder(),
-                  fillColor: Colors.white,
-                  filled: true),
+            CampoForm(
+              label: 'E-mail',
+              dica: 'ex: fulanodetal@gmail.com',
+              controller: _controller.email,
+              teclado: TextInputType.emailAddress,
+              legenda: '',
             ),
-          ),
-
-          //SENHA
-          Padding(
-            padding: const EdgeInsets.fromLTRB(50, 20, 20, 0),
-            child: TextFormField(
-              obscureText: mostrarSenha,
-              keyboardType: TextInputType.text,
-              decoration: InputDecoration(
-                  hintText: '12345678',
-                  label: Text('Senha:'),
-                  prefixIcon: Icon(Icons.lock),
-                  fillColor: Colors.white,
-                  filled: true,
-                  suffix: IconButton(
-                    onPressed: () {
-                      setState(() {
-                        mostrarSenha = !mostrarSenha;
-                      });
-                    },
-                    icon: Icon(mostrarSenha == true
-                        ? Icons.visibility_off
-                        : Icons.remove_red_eye_outlined),
-                  ),
-                  border: OutlineInputBorder()),
+            CampoForm(
+              label: 'Senha',
+              dica: '123456',
+              controller: _controller.senha,
+              isSenha: true,
+              legenda: '',
             ),
-          ),
-          Padding(
-            padding: const EdgeInsets.fromLTRB(50, 20, 20, 0),
-            child: ElevatedButton(
-              onPressed: () {
-                Navigator.pop(context);
-              },
-              child: Text(
-                'Voltar',
-                style: TextStyle(color: Colors.white),
-              ),
-              style: ElevatedButton.styleFrom(
-                  primary: Colors.teal, minimumSize: Size(100, 50)),
-            ),
-          ),
-          //botão cadastrar
-          Padding(
-            padding: const EdgeInsets.fromLTRB(50, 20, 20, 0),
-            child: ElevatedButton(
-              onPressed: () {
-                final rota = MaterialPageRoute(
-                    builder: (context) => const cadastroUsuario());
-                Navigator.of(context).push(rota);
-              },
-              child: Text(
-                'Cadastrar',
-                style: TextStyle(color: Colors.teal),
-              ),
-              style: ElevatedButton.styleFrom(
-                  primary: Colors.white, minimumSize: Size(100, 50)),
-            ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
