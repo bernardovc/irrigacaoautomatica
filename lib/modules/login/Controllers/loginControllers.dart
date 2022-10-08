@@ -9,10 +9,10 @@ class LoginController extends ChangeNotifier {
 
 
     print(senha.value);
-    if(email.value.text == 'aluno@gmail.com' && senha.value.text == 'abc123'){
+    if(email.value.text == 'admin@gmail.com' && senha.value.text == 'admin123'){
       onSuccess();
     } else {
-      onFailure('Os dados inseridos não foram encontrados no registro, tente novamente.');
+      onFailure('Os dados inseridos não foram encontrados no registro, por favor tente novamente com admin@gmail.com e admin123.');
     }
   }
 }

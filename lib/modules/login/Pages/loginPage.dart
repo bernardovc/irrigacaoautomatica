@@ -53,8 +53,16 @@ class _LoginPageState extends State<LoginPage> {
             child: BotaoTexto(
               texto: 'Entrar', 
               funcao: (){
-                final rota = MaterialPageRoute(builder: (context) => const MonitorGeral());
-                Navigator.of(context).push(rota);
+                _controller.ValidarDados(
+                  onSuccess: (){
+                    final rota = MaterialPageRoute(builder: (context) => const MonitorGeral());
+                    Navigator.of(context).push(rota);
+                  }, 
+                  
+                  onFailure: (String erro) {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(content: Text(erro)));
+                  });
               }, 
               tamanhoBotao: Size(150,50), 
               corBotao: Colors.teal,
