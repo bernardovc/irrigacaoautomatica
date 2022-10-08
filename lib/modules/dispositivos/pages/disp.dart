@@ -3,6 +3,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:trabalhotcc/modules/dispositivos/controllers/disp_controller.dart';
+import 'package:trabalhotcc/modules/dispositivos/models/dispositivo_model.dart';
+import 'package:trabalhotcc/shared/components/botaoIcon.dart';
+import 'package:trabalhotcc/shared/components/campoForm.dart';
+import 'package:trabalhotcc/shared/components/exibirDisp.dart';
 
 class Dispositivos extends StatefulWidget {
   const Dispositivos({Key? key, String? title}) : super(key: key);
@@ -12,6 +17,14 @@ class Dispositivos extends StatefulWidget {
 }
 
 class _DispositivosState extends State<Dispositivos> {
+
+  final _controller = DispositivosController();
+
+  Dispositivo disp1 = Dispositivo(nome: 'Milho1', cod: 'MD209', setor: 'Milho-A1', status: true, img: 4);
+  Dispositivo disp2 = Dispositivo(nome: 'Milho2', cod: 'MD309', setor: 'Milho-A2', status: false, img: 4);
+  Dispositivo disp3 = Dispositivo(nome: 'Alface1', cod: 'MD839', setor: 'Alface-A1', status: true, img: 4);
+  Dispositivo disp4 = Dispositivo(nome: 'Alface2', cod: 'MD939', setor: 'Alface-A2', status: true, img: 4);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -51,62 +64,21 @@ class _DispositivosState extends State<Dispositivos> {
                           children: [
 
                             // -------------------------------------------
-                            Padding(
-                              padding: EdgeInsets.all(0),
-                              child: Text("Nome:", style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold),),
-                            ),
-
-                            Padding(
-                              padding: EdgeInsets.all(5),
-                              child: TextField(
-                                keyboardType: TextInputType.text,
-                                decoration: InputDecoration(
-                                  hintText: "Nome fantasia criado pelo Agricultor",
-                                  fillColor: Colors.white,
-                                  filled: true,
-                                ),
-                              ),
-                            ),
+                            
+                            CampoForm(legenda: 'Nome:', controller: _controller.nome, dica: 'Nome fantasia criado pelo Agricultor',),
 
                             // -------------------------------------------
-                            Padding(
-                              padding: EdgeInsets.fromLTRB(0, 10, 0, 0),
-                              child: Text("Código:", style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold),),
-                            ),
 
-                            Padding(
-                              padding: EdgeInsets.all(5),
-                              child: TextField(
-                                keyboardType: TextInputType.text,
-                                decoration: InputDecoration(
-                                  hintText: "Ex. UE-209",
-                                  fillColor: Colors.white,
-                                  filled: true,
-                                ),
-                              ),
-                            ),
+                            CampoForm(legenda: 'Código:', controller: _controller.codigo, dica: 'Ex. UE-209',),
 
                             // -------------------------------------------
-                            Padding(
-                              padding: EdgeInsets.fromLTRB(0, 10, 0, 0),
-                              child: Text("Setor:", style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold),),
-                            ),
 
-                            Padding(
-                              padding: EdgeInsets.all(5),
-                              child: TextField(
-                                keyboardType: TextInputType.text,
-                                decoration: InputDecoration(
-                                  hintText: "Ex. Milho-A3",
-                                  fillColor: Colors.white,
-                                  filled: true,
-                                ),
-                              ),
-                            ),
-
-                            // -------------------------------------------
+                            CampoForm(legenda: 'Setor:', controller: _controller.setor, dica: 'Ex. Milho-A3',),
+                            
                             // Botão adicionar
 
+                            // BotaoIcon(icon: Icon(Icons.access_alarms_outlined), tamanho: 20, funcao: (){}),
+                            
                             Row(
                               mainAxisAlignment: MainAxisAlignment.end,
                               children: [
@@ -126,7 +98,7 @@ class _DispositivosState extends State<Dispositivos> {
                                   ),
                                 )
                               ],
-                            ),
+                            ),  
 
                         ]),
                       ),
@@ -163,90 +135,26 @@ class _DispositivosState extends State<Dispositivos> {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
+
+                            Divider(color: Colors.black,),
                             
-                            /* /////////////////////
-                               //  Dispositivo 1  //
-                               /////////////////////
-                            */
+                            ExibirDisp(disp: disp1),
 
                             Divider(color: Colors.black,),
 
-                            Row(children: [
-                              Padding(padding: EdgeInsets.fromLTRB(10, 10, 20, 10), 
-                                child: Image.asset("images/dispPlaceholder.png"),
-                              ),
-                              
-                              Padding(padding: EdgeInsets.fromLTRB(0, 0, 10, 0), child: Container(
-                                color: Colors.grey,
-                                width: 2,
-                                height: 150,
-                                ), 
-                              ),
-
-                              Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text("Nome: Milho1\n\nCodigo: MD209\n\nSetor: Milho-A1"),
-                                  Text("\n\nStatus: "), Text("Ativado", style: TextStyle(color: Colors.green),),
-                                ],
-                              )
-                            ],),
-
-                            /* /////////////////////
-                               //  Dispositivo 2  //
-                               /////////////////////
-                            */
+                            ExibirDisp(disp: disp2),
 
                             Divider(color: Colors.black,),
 
-                            Row(children: [
-                              Padding(padding: EdgeInsets.fromLTRB(10, 10, 20, 10), 
-                                child: Image.asset("images/dispPlaceholder.png"),
-                              ),
-                              
-                              Padding(padding: EdgeInsets.fromLTRB(0, 0, 10, 0), child: Container(
-                                color: Colors.grey,
-                                width: 2,
-                                height: 150,
-                                ), 
-                              ),
-
-                              Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text("Nome: Milho2\n\nCodigo: MD309\n\nSetor: Milho-A2"),
-                                  Text("\n\nStatus: "), Text("Desativado", style: TextStyle(color: Colors.red),),
-                                ],
-                              )
-                            ],),
-
-                            /* /////////////////////
-                               //  Dispositivo 3  //
-                               /////////////////////
-                            */
+                            ExibirDisp(disp: disp3),
 
                             Divider(color: Colors.black,),
 
-                            Row(children: [
-                              Padding(padding: EdgeInsets.fromLTRB(10, 10, 20, 10), 
-                                child: Image.asset("images/dispPlaceholder.png"),
-                              ),
-                              
-                              Padding(padding: EdgeInsets.fromLTRB(0, 0, 10, 0), child: Container(
-                                color: Colors.grey,
-                                width: 2,
-                                height: 150,
-                                ), 
-                              ),
+                            ExibirDisp(disp: disp4),
 
-                              Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text("Nome: Alface1\n\nCodigo: MD839\n\nSetor: Alface-A1"),
-                                  Text("\n\nStatus: "), Text("Ativado", style: TextStyle(color: Colors.green),),
-                                ],
-                              )
-                            ],)
+                            Divider(color: Colors.black,),
+
+                            
 
                           ],),
                       )
