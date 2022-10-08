@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:trabalhotcc/modules/dispositivos/pages/disp.dart';
 import 'package:trabalhotcc/shared/components/botaoTexto.dart';
 
 class MonitorGeral extends StatefulWidget {
@@ -30,7 +31,7 @@ class _MonitorGeralState extends State<MonitorGeral> {
           */
 
           Padding(
-            padding: EdgeInsets.fromLTRB(10, 10, 10, 10),
+            padding: EdgeInsets.fromLTRB(30, 10, 30, 10),
             child: Container(
               padding: EdgeInsets.fromLTRB(10, 20, 10, 10),
               decoration: BoxDecoration(
@@ -74,7 +75,7 @@ class _MonitorGeralState extends State<MonitorGeral> {
           */
 
           Padding(
-            padding: EdgeInsets.fromLTRB(10, 10, 10, 10),
+            padding: EdgeInsets.fromLTRB(30, 10, 30, 10),
             child: Container(
               padding: EdgeInsets.fromLTRB(10, 20, 10, 10),
               decoration: BoxDecoration(
@@ -107,6 +108,19 @@ class _MonitorGeralState extends State<MonitorGeral> {
                   ),
                 ],
               ),
+            ),
+          ),
+
+          Padding(
+            padding: EdgeInsets.fromLTRB(15, 0, 15, 0), 
+            child: BotaoTexto(
+              texto: 'Dispositivos', 
+              funcao: (){
+                final rota = MaterialPageRoute(builder: (context) => const Dispositivos());
+                Navigator.of(context).push(rota);
+              }, 
+              tamanhoBotao: Size(200, 50),
+              corBotao: Colors.teal,
             ),
           ),
         ],
