@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:trabalhotcc/modules/monitorarGeral/pages/mon_geral.dart';
 import 'package:trabalhotcc/shared/components/botaoTexto.dart';
 
 import '../../../shared/components/campoForm.dart';
+import '../../../shared/components/campoFormLogin.dart';
 import '../controllers/UsuarioController.dart';
 
 class cadastroUsuario extends StatefulWidget {
@@ -31,48 +33,55 @@ class _cadastroUsuarioState extends State<cadastroUsuario> {
               width: 350,
               height: 350,
             ),
-            CampoForm(
-              label: 'Seu nome completo',
-              dica: 'ex: fulano de tal',
+
+            CampoFormLogin(
+              label: 'Nome completo',
+              dica: 'ex.: fulano de tal',
               controller: _controller.nome,
-              legenda: '',
+
             ),
-            CampoForm(
+            CampoFormLogin(
               label: 'Nome de usuario',
-              dica: 'usuario',
+              dica: 'ex.: usuario123',
               controller: _controller.nomeUsu,
-              legenda: '',
             ),
-            CampoForm(
+
+            CampoFormLogin(
               label: 'Nome da propriedade',
-              dica: 'Fazendinha feliz',
+              dica: 'ex.: Fazendinha Feliz',
               controller: _controller.nomeProp,
-              legenda: '',
             ),
-            CampoForm(
+
+            CampoFormLogin(
               label: 'CPF',
-              dica: '123.456.891-70',
+              dica: 'ex.: 123.456.891-70',
               controller: _controller.cpf,
-              legenda: '',
             ),
-            CampoForm(
+
+            CampoFormLogin(
               label: 'E-mail',
-              dica: 'ex: fulanodetal@gmail.com',
+              dica: 'ex.: fulanodetal@gmail.com',
               controller: _controller.email,
               teclado: TextInputType.emailAddress,
-              legenda: '',
             ),
-            CampoForm(
+
+            CampoFormLogin(
               label: 'Senha',
-              dica: '123456',
+              dica: 'ex.: 123456',
               controller: _controller.senha,
               isSenha: true,
-              legenda: '',
             ),
 
             Padding(
-            padding: const EdgeInsets.fromLTRB(50, 20, 20, 0),
-            child: BotaoTexto(tamanhoBotao:Size(100,50),  texto: 'Salvar', funcao: (),)  
+            padding: const EdgeInsets.fromLTRB(50, 20, 50, 0),
+            child: BotaoTexto(
+              texto: 'Salvar', 
+              tamanhoBotao: Size(80,60), 
+              funcao: () {
+                Navigator.pop(context);
+              }, 
+              corBotao: Colors.green,
+            ),
           ),
           ],
         ),

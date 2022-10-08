@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class BotaoTexto extends StatefulWidget{
   final String texto;
-  final Function funcao;
+  final VoidCallback funcao;
   final Color? corBotao;
   final Color? corTexto;
   final Size tamanhoBotao;
@@ -41,7 +41,7 @@ class _BotaoTextoState extends State<BotaoTexto>{
           primary: widget.corBotao ?? Colors.white,
           minimumSize: widget.tamanhoBotao,
         ),
-        onPressed: () {widget.funcao;},
+        onPressed: widget.funcao,
       ),
     );
   }

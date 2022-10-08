@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:trabalhotcc/modules/Cadastro/Pages/cadastroPage.dart';
+import 'package:trabalhotcc/shared/components/botaoTexto.dart';
+import 'package:trabalhotcc/shared/components/campoFormLogin.dart';
 
+import '../../monitorarGeral/pages/mon_geral.dart';
 import '../Controllers/loginControllers.dart';
 
 class LoginPage extends StatefulWidget {
@@ -25,77 +28,54 @@ class _LoginPageState extends State<LoginPage> {
             width: 350,
             height: 350,
           ),
+
           //EMAIL
-          Padding(
-            padding: const EdgeInsets.fromLTRB(50, 20, 20, 0),
-            child: TextFormField(
-              keyboardType: TextInputType.emailAddress,
-              decoration: InputDecoration(
-                  hintText: 'Ex. exemplo@email.com',
-                  label: Text('Email:'),
-                  prefixIcon: Icon(Icons.mail),
-                  border: OutlineInputBorder(),
-                  fillColor: Colors.white,
-                  filled: true),
-            ),
+          CampoFormLogin(
+            label: 'Email', 
+            controller: _controller.email, 
+            dica: 'Ex. exemplo@email.com', 
+            teclado: TextInputType.emailAddress, 
+            icon: Icon(Icons.mail),
           ),
 
           //SENHA
+          CampoFormLogin(
+            label: 'Senha', 
+            controller: _controller.senha, 
+            dica: 'Ex. 12345678', 
+            isSenha: true, 
+            icon: Icon(Icons.lock),
+          ),
+
+          //Botão Entrar
           Padding(
-            padding: const EdgeInsets.fromLTRB(50, 20, 20, 0),
-            child: TextFormField(
-              obscureText: mostrarSenha,
-              keyboardType: TextInputType.text,
-              decoration: InputDecoration(
-                  hintText: '12345678',
-                  label: Text('Senha:'),
-                  prefixIcon: Icon(Icons.lock),
-                  fillColor: Colors.white,
-                  filled: true,
-                  suffix: IconButton(
-                    onPressed: () {
-                      setState(() {
-                        mostrarSenha = !mostrarSenha;
-                      });
-                    },
-                    icon: Icon(mostrarSenha == true
-                        ? Icons.visibility_off
-                        : Icons.remove_red_eye_outlined),
-                  ),
-                  border: OutlineInputBorder()),
+            padding: const EdgeInsets.fromLTRB(30, 20, 30, 0),
+            child: BotaoTexto(
+              texto: 'Entrar', 
+              funcao: (){
+                final rota = MaterialPageRoute(builder: (context) => const MonitorGeral());
+                Navigator.of(context).push(rota);
+              }, 
+              tamanhoBotao: Size(150,50), 
+              corBotao: Colors.teal,
             ),
           ),
 
-          //botão entrar
+          //Botão Cadastrar
           Padding(
-            padding: const EdgeInsets.fromLTRB(50, 20, 20, 0),
-            child: ElevatedButton(
-              onPressed: () {},
-              child: Text(
-                'Entrar',
-                style: TextStyle(color: Colors.white),
-              ),
-              style: ElevatedButton.styleFrom(
-                  primary: Colors.teal, minimumSize: Size(100, 50)),
+            padding: const EdgeInsets.fromLTRB(30, 0, 30, 0),
+            child: BotaoTexto(
+              texto: 'Cadastre-se', 
+              funcao: (){
+                 final rota = MaterialPageRoute(builder: (context) => const cadastroUsuario());
+                 Navigator.of(context).push(rota);
+              }, 
+              tamanhoBotao: Size(150,50), 
+              corBotao: Colors.white, 
+              corTexto: Colors.teal,
             ),
           ),
-          //botão cadastrar
-          Padding(
-            padding: const EdgeInsets.fromLTRB(50, 20, 20, 0),
-            child: ElevatedButton(
-              onPressed: () {
-                final rota = MaterialPageRoute(
-                    builder: (context) => const cadastroUsuario());
-                Navigator.of(context).push(rota);
-              },
-              child: Text(
-                'Cadastre-se',
-                style: TextStyle(color: Colors.teal),
-              ),
-              style: ElevatedButton.styleFrom(
-                  primary: Colors.white, minimumSize: Size(100, 50)),
-            ),
-          ),
+
         ],
       ),
     );

@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:trabalhotcc/shared/components/botaoTexto.dart';
 
 class MonitorGeral extends StatefulWidget {
   const MonitorGeral({Key? key, String? title}) : super(key: key);
@@ -50,12 +51,12 @@ class _MonitorGeralState extends State<MonitorGeral> {
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
                       Padding(
-                        padding: EdgeInsets.fromLTRB(10, 20, 10, 10),
-                        child: ElevatedButton(
-                          onPressed: (){}, 
-                          child: Text('Detalhar', style: TextStyle(fontSize: 20)),
-                          style: ElevatedButton.styleFrom(primary: Colors.green),
-                          
+                        padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
+                        child: BotaoTexto(
+                          texto: 'Detalhar', 
+                          funcao: () {}, 
+                          tamanhoBotao: Size (100,50),
+                          corBotao: Colors.teal,                        
                         )
                       ),
                     ],
@@ -94,12 +95,12 @@ class _MonitorGeralState extends State<MonitorGeral> {
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
                       Padding(
-                        padding: EdgeInsets.fromLTRB(10, 20, 10, 10),
-                        child: ElevatedButton(
-                          onPressed: (){}, 
-                          child: Text('Detalhar', style: TextStyle(fontSize: 20)),
-                          style: ElevatedButton.styleFrom(primary: Colors.green),
-                          
+                        padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
+                        child: BotaoTexto(
+                          texto: 'Detalhar', 
+                          funcao: () {}, 
+                          tamanhoBotao: Size (100,50),
+                          corBotao: Colors.teal,                        
                         )
                       ),
                     ],

@@ -65,15 +65,15 @@ class _DispositivosState extends State<Dispositivos> {
 
                             // -------------------------------------------
                             
-                            CampoForm(legenda: 'Nome:', controller: _controller.nome, dica: 'Nome fantasia criado pelo Agricultor',),
+                            CampoForm(legenda: 'Nome:', controller: _controller.nome, dica: 'Nome fantasia criado pelo Agricultor'),
 
                             // -------------------------------------------
 
-                            CampoForm(legenda: 'Código:', controller: _controller.codigo, dica: 'Ex. UE-209',),
+                            CampoForm(legenda: 'Código:', controller: _controller.codigo, dica: 'Ex. UE-209'),
 
                             // -------------------------------------------
 
-                            CampoForm(legenda: 'Setor:', controller: _controller.setor, dica: 'Ex. Milho-A3',),
+                            CampoForm(legenda: 'Setor:', controller: _controller.setor, dica: 'Ex. Milho-A3'),
                             
                             // Botão adicionar
 
